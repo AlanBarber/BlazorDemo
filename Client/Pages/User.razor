@@ -1,0 +1,25 @@
+﻿@page "/user"
+@page "/user/{UserName}"
+@attribute [Authorize]
+@inject NavigationManager NavigationManager
+
+<h1>User</h1>
+
+<p>Current user: @UserName</p>
+
+<button class="btn btn-primary" @onclick="ChangeUserName">Update name to tom</button>
+
+@if (UserName == "tom")
+{
+    <h2>tom is the bomb!</h2>
+}
+
+@code {
+    [Parameter]
+    public string UserName { get; set; }
+
+    void ChangeUserName()
+    {
+        NavigationManager.NavigateTo("/user/tom");
+    }
+}

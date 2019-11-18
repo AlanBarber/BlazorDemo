@@ -1,0 +1,22 @@
+﻿@page "/counter"
+@using Services
+@inject AppState AppState
+
+<h1>Counter</h1>
+
+<p class="@(AppState.SessionCounter > 10 ? "red" : "")">Current count: @AppState.SessionCounter</p>
+
+<p>Global count: @AppState.LocalCounter</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+
+
+@code {
+
+    void IncrementCount()
+    {
+        AppState.SessionCounter++;
+        AppState.LocalCounter++;
+    }
+}
